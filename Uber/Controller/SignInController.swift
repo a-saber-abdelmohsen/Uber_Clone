@@ -32,6 +32,7 @@ class SignInController: BaseLogController {
         view.addSubview(fieldsStack)
         view.addSubview(mainButton)
         
+        //take the same width in both Orientation related to screen width
         if let window = UIApplication.shared.windows.first {
             if let scene = window.windowScene {
                 if scene.interfaceOrientation.isPortrait {
