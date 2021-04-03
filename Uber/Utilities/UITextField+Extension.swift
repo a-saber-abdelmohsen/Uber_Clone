@@ -20,6 +20,7 @@ extension UITextField {
         tf.borderStyle = .none
         tf.textColor = .whiteTextColor
         tf.keyboardAppearance = .dark
+        tf.autocorrectionType = .no
         
         if type == .Email {
             tf.attributedPlaceholder = NSAttributedString(string: "Email",
@@ -28,7 +29,7 @@ extension UITextField {
             tf.attributedPlaceholder = NSAttributedString(string: "Full Name",
                                                           attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         } else {
-            tf.isSecureTextEntry = true
+            
             tf.attributedPlaceholder = NSAttributedString(string: "Password",
                                                           attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
         }

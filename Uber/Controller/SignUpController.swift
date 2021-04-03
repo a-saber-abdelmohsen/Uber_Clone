@@ -6,16 +6,30 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
+enum AccountType: Int, CustomStringConvertible {
+    case Rider
+    case Driver
+    
+    var description: String {
+        switch self {
+        case .Driver: return "Driver"
+        case .Rider: return "Rider"
+        }
+    }
+}
 
 class SignUpController: BaseLogController {
     // MARK: - Properties
     //mainButton for Sign up Button
     //emailContainerView //emailTextFeild //passwordContainerView //passwordTextFeild
     
-    
-    let fullNameTextField: UITextField = {
-        return UITextField().logTextField(type: .FullName)
+    lazy var fullNameTextField: UITextField = {
+        let field = UITextField().logTextField(type: .FullName)
+        field.delegate = self
+        return field
     }()
     
     lazy var fullNameContainerView: UIView = {
@@ -27,8 +41,8 @@ class SignUpController: BaseLogController {
     }()
     
     let typeSegmentController: UISegmentedControl = {
-        let sc = UISegmentedControl(items: ["Rider","Driver"])
-        sc.selectedSegmentIndex = 0
+        let sc = UISegmentedControl(items: [AccountType.Rider.description, AccountType.Driver.description])
+        sc.selectedSegmentIndex = AccountType.Rider.rawValue
         sc.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.whiteTextColor,                                        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], for: .normal)
         
         sc.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black,
@@ -80,7 +94,38 @@ class SignUpController: BaseLogController {
     
     // MARK: - Selectors
     override func signUpPressed() {
-        print("Sign Up")
+        if emailTextFeild.text == "" || passwordTextField.text == "" || fullNameTextField.text == "" {
+            showAlert(with: .emptyField)
+            return
+        }
+        guard let email = emailTextFeild.text else {return}
+        guard let fullName = fullNameTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        let accountType = typeSegmentController.selectedSegmentIndex
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let _ = error {
+                self.showAlert(with: .wrongEmail)
+                return
+            }
+            //log in with the user
+            guard let userId = result?.user.uid  else {return}
+            let values: [String: Any] = ["email": email,
+                                         "fullName": fullName,
+                                         "accountType": accountType,
+                                         "password": password]
+        
+            //works with realtime database
+            Database.database().reference().child("users").child(userId).updateChildValues(values) { (error, ref) in
+                if let error = error {
+                    print("Error: update user's info", error)
+                    //sgin in anyway or may ask for the info one more time
+                }
+            }
+            //log in the user
+            self.userDidLogin(user: result?.user)
+        }
+        
     }
     
     override func buttomButtonLogin() {

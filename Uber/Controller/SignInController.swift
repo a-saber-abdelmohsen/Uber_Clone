@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignInController: BaseLogController {
     // MARK: - Properties
@@ -50,7 +51,22 @@ class SignInController: BaseLogController {
     
     // MARK: - Selectors
     override func logInPressed() {
-        print("log in")
+        if emailTextFeild.text == "" || passwordTextField.text == "" {
+            showAlert(with: .emptyEmailorPassword)
+            return
+        }
+        guard let email = emailTextFeild.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        //log in with user for
+        Auth.auth().signIn(withEmail: email, password: password) { (result, errer) in
+            if errer != nil {
+                self.showAlert(with: .wrongEmail)
+                return
+            }
+            //log the user in
+            self.userDidLogin(user: result?.user)
+        }
     }
     
     override func buttomButtonSignup() {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum LogControllerType {
     case Login
@@ -43,16 +44,20 @@ class BaseLogController: UIViewController {
         return UIView().containerView(withImage: #imageLiteral(resourceName: "ic_mail_outline_white_2x"), textField: emailTextFeild, withSeparator: true)
     }()
     
-    let emailTextFeild: UITextField = {
-        return UITextField().logTextField(type: .Email)
+    lazy var emailTextFeild: UITextField = {
+        let field = UITextField().logTextField(type: .Email)
+        field.delegate = self
+        return field
     }()
     
     lazy var passwordContainerView: UIView = {
-        return UIView().containerView(withImage: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextFeild, withSeparator: true)
+        return UIView().containerView(withImage: #imageLiteral(resourceName: "ic_lock_outline_white_2x"), textField: passwordTextField, withSeparator: true)
     }()
     
-    let passwordTextFeild: UITextField = {
-        return UITextField().logTextField(type: .Password)
+    lazy var passwordTextField: UITextField = {
+        let field = UITextField().logTextField(type: .Password)
+        field.delegate = self
+        return field
     }()
     
     lazy var mainButton: UIButton = {
@@ -111,6 +116,16 @@ class BaseLogController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
     }
     
+    func userDidLogin(user: User?) {
+        //log the user in
+        let home = HomeController()
+        home.user = user
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = home
+            UIView.transition(with: window, duration: 0.4, options: .transitionCrossDissolve) {}
+        }
+    }
+    
     //fuctions to override
     func logInPressed() {}
     
@@ -137,5 +152,16 @@ class BaseLogController: UIViewController {
         } else {
             buttomButtonLogin()
         }
+    }
+}
+
+extension BaseLogController: UITextFieldDelegate {
+    /// work around Strong password overlay on UITextField
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if(textField == self.passwordTextField) { textField.isSecureTextEntry = true }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }
