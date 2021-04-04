@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Uber Needs Your Location to Find You Nearby Drivers</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Uber Needs Your Location to Find You Nearby Drivers</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>For Better Experience, Uber Needs Always Your Location to Help Drivers Get to your Exact Location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

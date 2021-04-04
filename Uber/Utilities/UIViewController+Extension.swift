@@ -12,6 +12,8 @@ enum ErrorMessages: Int, CustomStringConvertible {
     case wrongEmail
     case emptyField
     case cannotLogOut
+    case locationServicesDisables
+    case locationServiceDenied
     
     var description: String {
         switch self {
@@ -19,6 +21,8 @@ enum ErrorMessages: Int, CustomStringConvertible {
         case .wrongEmail: return "Wrong Email or Password"
         case .emptyField: return "Please Fill In Empty Fields"
         case .cannotLogOut: return "Can't Log out Please Check The Internet Connection and Try Again"
+        case .locationServiceDenied: return "Uber Needs Your Location to Find You Nearby Drivers\nGo TO: Settings > Privacy > Location Services"
+        case .locationServicesDisables: return "Please Enable GPS to Use Uber"
         }
     }
 }
@@ -31,5 +35,11 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
         }))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func coverAllView(with subView: UIView) {
+        view.addSubview(subView)
+        subView.anchor(top: view.topAnchor, bottom: view.bottomAnchor,
+                       leading: view.leadingAnchor, trailing: view.trailingAnchor, height: nil)
     }
 }
