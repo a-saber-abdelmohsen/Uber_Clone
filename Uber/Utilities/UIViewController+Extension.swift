@@ -34,7 +34,11 @@ extension UIViewController {
         //add Cancel button to alert
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
         }))
-        present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
     }
     
     func coverAllView(with subView: UIView) {

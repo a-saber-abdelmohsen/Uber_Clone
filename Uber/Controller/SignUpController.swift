@@ -10,6 +10,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 enum AccountType: Int, CustomStringConvertible {
+    
     case Rider
     case Driver
     
@@ -76,20 +77,12 @@ class SignUpController: BaseLogController {
         view.addSubview(fieldsStack)
         view.addSubview(mainButton)
         
-        if let window = UIApplication.shared.windows.first {
-            if let scene = window.windowScene {
-                if scene.interfaceOrientation.isPortrait {
-                    fieldsStack.constant(height: 230, width: view.frame.width - 32)
-                } else {
-                    fieldsStack.constant(height: 230, width: view.frame.height - 32)
-                }
-            }
-        }
-        
+        fieldsStack.dimensions(height: 230, width: view.frame.width - 32)
         fieldsStack.centerwith(centerX: view.centerXAnchor, centerY: view.centerYAnchor, topConstant: -40)
         
-        mainButton.anchor(top: fieldsStack.bottomAnchor, bottom: nil, leading: fieldsStack.leadingAnchor, trailing: fieldsStack.trailingAnchor, height: nil, topPadding: 24)
-        mainButton.constant(height: mainButtonHeight)
+        mainButton.anchor(top: fieldsStack.bottomAnchor, leading: fieldsStack.leadingAnchor,
+                          trailing: fieldsStack.trailingAnchor, topPadding: 24)
+        mainButton.dimensions(height: mainButtonHeight)
     }
     
     // MARK: - Selectors
@@ -123,7 +116,7 @@ class SignUpController: BaseLogController {
                 }
             }
             //log in the user
-            self.userDidLogin(user: result?.user)
+            self.userDidLogin()
         }
         
     }

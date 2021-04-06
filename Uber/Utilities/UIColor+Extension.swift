@@ -15,5 +15,7 @@ extension UIColor {
     static let darkBackgroundColor = UIColor().rgb(25, 25, 25)
     static let whiteTextColor = UIColor(white: 1, alpha: 0.87)
     static let mainBlue = UIColor().rgb(17, 154, 237)
+    static let lightLabelGray = UIColor().rgb(240, 240, 240)
+    static let darkLabelGray = UIColor().rgb(210, 210, 210)
     
 }

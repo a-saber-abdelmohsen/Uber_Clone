@@ -33,20 +33,13 @@ class SignInController: BaseLogController {
         view.addSubview(fieldsStack)
         view.addSubview(mainButton)
         
-        //take the same width in both Orientation related to screen width
-        if let window = UIApplication.shared.windows.first {
-            if let scene = window.windowScene {
-                if scene.interfaceOrientation.isPortrait {
-                    fieldsStack.constant(height: 90, width: view.frame.width - 32)
-                } else {
-                    fieldsStack.constant(height: 90, width: view.frame.height - 32)
-                }
-            }
-        }
+        fieldsStack.dimensions(height: 90, width: view.frame.width - 32)
+        
         fieldsStack.centerwith(centerX: view.centerXAnchor, centerY: view.centerYAnchor, topConstant: -60)
         
-        mainButton.anchor(top: fieldsStack.bottomAnchor, bottom: nil, leading: fieldsStack.leadingAnchor, trailing: fieldsStack.trailingAnchor, height: nil, topPadding: 24)
-        mainButton.constant(height: mainButtonHeight)
+        mainButton.anchor(top: fieldsStack.bottomAnchor, leading: fieldsStack.leadingAnchor,
+                          trailing: fieldsStack.trailingAnchor, topPadding: 24)
+        mainButton.dimensions(height: mainButtonHeight)
     }
     
     // MARK: - Selectors
@@ -65,7 +58,7 @@ class SignInController: BaseLogController {
                 return
             }
             //log the user in
-            self.userDidLogin(user: result?.user)
+            self.userDidLogin()
         }
     }
     

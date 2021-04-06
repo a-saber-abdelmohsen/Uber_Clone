@@ -98,8 +98,7 @@ class BaseLogController: UIViewController {
         configureNavigationController()
         view.addSubview(titleLable)
         
-        titleLable.anchor(top: view.layoutMarginsGuide.topAnchor, bottom: nil, leading: nil,
-                          trailing: nil, height: nil)
+        titleLable.anchor(top: view.layoutMarginsGuide.topAnchor)
         titleLable.centerwith(centerX: view.centerXAnchor)
         
         bottomStack = UIStackView(arrangedSubviews: [bottomQLabel, bottomButton])
@@ -107,8 +106,7 @@ class BaseLogController: UIViewController {
         view.addSubview(bottomStack)
         
         bottomStack.centerwith(centerX: view.centerXAnchor)
-        bottomStack.anchor(top: nil, bottom: view.layoutMarginsGuide.bottomAnchor,
-                           leading: nil, trailing: nil, height: nil)
+        bottomStack.anchor(bottom: view.layoutMarginsGuide.bottomAnchor)
     }
     
     private func configureNavigationController(){
@@ -116,10 +114,9 @@ class BaseLogController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
     }
     
-    func userDidLogin(user: User?) {
+    func userDidLogin() {
         //log the user in
         let home = HomeController()
-        home.user = user
         if let window = UIApplication.shared.windows.first {
             window.rootViewController = home
             UIView.transition(with: window, duration: 0.4, options: .transitionCrossDissolve) {}

@@ -9,9 +9,9 @@ import UIKit
 
 extension UIView {
     
-    func anchor(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor?,
-                leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?,
-                height: NSLayoutDimension?, heightMultiplier: CGFloat = 1,
+    func anchor(top: NSLayoutYAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil,
+                leading: NSLayoutXAxisAnchor? = nil, trailing: NSLayoutXAxisAnchor? = nil,
+                height: NSLayoutDimension? = nil, heightMultiplier: CGFloat = 1,
                 topPadding: CGFloat = 0, bottomPadding: CGFloat = 0,
                 leadingPadding: CGFloat = 0, trailingPadding: CGFloat = 0) {
         
@@ -46,7 +46,7 @@ extension UIView {
         }
     }
     
-    func constant(height: CGFloat = 0, width: CGFloat = 0) {
+    func dimensions(height: CGFloat = 0, width: CGFloat = 0) {
         self.translatesAutoresizingMaskIntoConstraints = false
         if height != 0 {
             self.heightAnchor.constraint(equalToConstant: height).isActive = true
@@ -64,7 +64,7 @@ extension UIView {
         
         imageView.anchor(top: nil, bottom: nil, leading: view.leadingAnchor, trailing: nil,
                          height: nil,leadingPadding: 8)
-        imageView.constant(height: 24, width: 24)
+        imageView.dimensions(height: 24, width: 24)
         imageView.centerwith(centerY: view.centerYAnchor)
         
         if let textField = textField {
@@ -82,8 +82,15 @@ extension UIView {
             sparatorView.anchor(top: nil, bottom: view.bottomAnchor, leading: view.leadingAnchor,
                                 trailing: view.trailingAnchor, height: nil,
                                 leadingPadding: 8, trailingPadding: 8)
-            sparatorView.constant(height: 0.75)
+            sparatorView.dimensions(height: 0.75)
         }
         return view
+    }
+    
+    
+    func addShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.8
+        layer.shadowOffset = .zero
     }
 }

@@ -27,7 +27,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         } else {
             let home = HomeController()
-            home.user = Auth.auth().currentUser
             window.rootViewController = home
         }
         self.window = window
