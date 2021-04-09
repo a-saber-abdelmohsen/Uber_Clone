@@ -14,6 +14,7 @@ struct User {
     init(dictionary: [String: Any]) {
         fullName = dictionary["fullName"] as? String ?? ""
         email = dictionary["email"] as? String ?? ""
-        accountType = dictionary["accountType"] as? AccountType ?? .Rider
+        accountType = AccountType(rawValue: dictionary["accountType"] as? Int ?? 0) ?? AccountType.Rider
+        print("DEBUG: \(accountType)")
     }
 }

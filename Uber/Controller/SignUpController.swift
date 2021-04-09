@@ -11,13 +11,13 @@ import FirebaseDatabase
 
 enum AccountType: Int, CustomStringConvertible {
     
-    case Rider
-    case Driver
+    case Rider = 0
+    case Driver = 1
     
     var description: String {
         switch self {
-        case .Driver: return "Driver"
         case .Rider: return "Rider"
+        case .Driver: return "Driver"
         }
     }
 }
@@ -109,7 +109,7 @@ class SignUpController: BaseLogController {
                                          "password": password]
         
             //works with realtime database
-            Database.database().reference().child("users").child(userId).updateChildValues(values) { (error, ref) in
+            USERS_REF.child(userId).updateChildValues(values) { (error, ref) in
                 if let error = error {
                     print("Error: update user's info", error)
                     //sgin in anyway or may ask for the info one more time

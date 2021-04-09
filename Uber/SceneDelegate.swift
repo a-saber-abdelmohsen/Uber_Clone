@@ -16,7 +16,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        
+        let userDefaults = UserDefaults.standard
         FirebaseApp.configure()
+        
+        //if the app is first lanched after uninstall delete current user
+        if (!userDefaults.bool(forKey: "hasRunBefore")) {
+            print("The app is launching for the first time. Setting UserDefaults...")
+
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                print("Error Sig")
+            }
+            // Update the flag indicator
+            userDefaults.set(true, forKey: "hasRunBefore")
+            userDefaults.synchronize() // This forces the app to update userDefaults
+            
+            // Run code here for the first launch
+        }
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
@@ -27,10 +46,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         } else {
             let home = HomeController()
+//            home.logOutUser()
             window.rootViewController = home
         }
         self.window = window
         self.window?.makeKeyAndVisible()
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -38,6 +59,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        /*
+         the app will continue to recieve location updates after it's been released
+         we shoud call stopMonitoringSignificantLocationChanges()
+         **/
+        print("sceneDidDisconnect")
+//        LocationHandler.shared.locationManager.stopMonitoringSignificantLocationChanges()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

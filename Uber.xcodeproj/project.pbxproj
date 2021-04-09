@@ -10,6 +10,8 @@
 		34672D569B467FE7C6FA3EE9 /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25D9696D1434865CE7C3715C /* Pods_Uber.framework */; };
 		E8084B99261C7D1D00B2B805 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8084B98261C7D1D00B2B805 /* Service.swift */; };
 		E8084B9C261C7FC000B2B805 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8084B9B261C7FC000B2B805 /* User.swift */; };
+		E8084B9F261C92DE00B2B805 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8084B9E261C92DE00B2B805 /* LocationManager.swift */; };
+		E81930D1261D1A220053A6FC /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81930D0261D1A210053A6FC /* Enums.swift */; };
 		E841938E2618696C00455481 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E841938D2618696C00455481 /* HomeController.swift */; };
 		E88F55282611DFEC00F95097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88F55272611DFEC00F95097 /* AppDelegate.swift */; };
 		E88F552A2611DFEC00F95097 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88F55292611DFEC00F95097 /* SceneDelegate.swift */; };
@@ -23,6 +25,8 @@
 		E8B0BBA2261A35B600D38989 /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B0BBA1261A35B600D38989 /* LocationInputView.swift */; };
 		E8BB02DE26178F74000E93CE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BB02DD26178F74000E93CE /* UIViewController+Extension.swift */; };
 		E8BD2479261A936A00FA1F58 /* LocationInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BD2478261A936A00FA1F58 /* LocationInputTextField.swift */; };
+		E8C4B3E9261F7EE400585D4A /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4B3E8261F7EE400585D4A /* DriverAnnotation.swift */; };
+		E8C4B3EC261F869D00585D4A /* MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C4B3EB261F869D00585D4A /* MapDelegate.swift */; };
 		E8CC788326170EFE007685D2 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CC788226170EFE007685D2 /* SignUpController.swift */; };
 		E8CC788626171042007685D2 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CC788526171042007685D2 /* UITextField+Extension.swift */; };
 		E8CC788926171F13007685D2 /* BaseLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CC788826171F13007685D2 /* BaseLogController.swift */; };
@@ -34,6 +38,8 @@
 		63ABC84DF19C1C419111092C /* Pods-Uber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.release.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.release.xcconfig"; sourceTree = "<group>"; };
 		E8084B98261C7D1D00B2B805 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E8084B9B261C7FC000B2B805 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E8084B9E261C92DE00B2B805 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E81930D0261D1A210053A6FC /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		E841938D2618696C00455481 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		E88F55242611DFEC00F95097 /* Uber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88F55272611DFEC00F95097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +55,8 @@
 		E8B0BBA1261A35B600D38989 /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		E8BB02DD26178F74000E93CE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E8BD2478261A936A00FA1F58 /* LocationInputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputTextField.swift; sourceTree = "<group>"; };
+		E8C4B3E8261F7EE400585D4A /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
+		E8C4B3EB261F869D00585D4A /* MapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
 		E8CC788226170EFE007685D2 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		E8CC788526171042007685D2 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		E8CC788826171F13007685D2 /* BaseLogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLogController.swift; sourceTree = "<group>"; };
@@ -85,6 +93,7 @@
 		E81056B8261881C200DEFE65 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				E81930D0261D1A210053A6FC /* Enums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -132,6 +141,7 @@
 				E8CC788526171042007685D2 /* UITextField+Extension.swift */,
 				E899A61A2611E5A7007D532D /* UIView+Extension.swift */,
 				E8BB02DD26178F74000E93CE /* UIViewController+Extension.swift */,
+				E8084B9E261C92DE00B2B805 /* LocationManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -142,6 +152,7 @@
 				E8CC788826171F13007685D2 /* BaseLogController.swift */,
 				E88F552B2611DFEC00F95097 /* SignInController.swift */,
 				E8CC788226170EFE007685D2 /* SignUpController.swift */,
+				E8C4B3EB261F869D00585D4A /* MapDelegate.swift */,
 				E841938D2618696C00455481 /* HomeController.swift */,
 			);
 			path = Controller;
@@ -160,8 +171,9 @@
 		E88F55402611E0F400F95097 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E81056B8261881C200DEFE65 /* Enums */,
 				E8084B9B261C7FC000B2B805 /* User.swift */,
+				E8C4B3E8261F7EE400585D4A /* DriverAnnotation.swift */,
+				E81056B8261881C200DEFE65 /* Enums */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,9 +313,12 @@
 				E8084B99261C7D1D00B2B805 /* Service.swift in Sources */,
 				E8B0BB9F261A28B000D38989 /* LocationInputButton.swift in Sources */,
 				E88F552C2611DFEC00F95097 /* SignInController.swift in Sources */,
+				E8084B9F261C92DE00B2B805 /* LocationManager.swift in Sources */,
+				E81930D1261D1A220053A6FC /* Enums.swift in Sources */,
 				E88F55282611DFEC00F95097 /* AppDelegate.swift in Sources */,
 				E8CC788626171042007685D2 /* UITextField+Extension.swift in Sources */,
 				E841938E2618696C00455481 /* HomeController.swift in Sources */,
+				E8C4B3EC261F869D00585D4A /* MapDelegate.swift in Sources */,
 				E8B0BBA2261A35B600D38989 /* LocationInputView.swift in Sources */,
 				E8084B9C261C7FC000B2B805 /* User.swift in Sources */,
 				E8CC788926171F13007685D2 /* BaseLogController.swift in Sources */,
@@ -311,6 +326,7 @@
 				E899A61B2611E5A7007D532D /* UIView+Extension.swift in Sources */,
 				E8BD2479261A936A00FA1F58 /* LocationInputTextField.swift in Sources */,
 				E88F55422611E17F00F95097 /* UIColor+Extension.swift in Sources */,
+				E8C4B3E9261F7EE400585D4A /* DriverAnnotation.swift in Sources */,
 				E8CC788326170EFE007685D2 /* SignUpController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
